@@ -15,6 +15,8 @@ function cf7cc_page_settings() {
 		update_option('_cf7cc_forms_ids', $_POST['_cf7cc_forms_ids']);
 		update_option('_cf7cc_field_name', $_POST['_cf7cc_field_name']);
 		update_option('_cf7cc_prompt', $_POST['_cf7cc_prompt']);
+		update_option('_cf7cc_yes_tag', $_POST['_cf7cc_yes_tag']);
+		update_option('_cf7cc_no_tag', $_POST['_cf7cc_no_tag']);
 		update_option('_cf7cc_send_emails', $_POST['_cf7cc_send_emails']); 
 	} ?>
 	<form method="post">
@@ -29,6 +31,10 @@ function cf7cc_page_settings() {
 		<input type="text" name="_cf7cc_field_name" value="<?php echo get_option("_cf7cc_field_name"); ?>" style="width: calc(100% - 20px);" /><br/>
 		<b><?php _e("Prompt", 'cf7cc'); ?>:<br/><small><?php _e("use field name between brackets [your-message]", 'cf7cc'); ?></small></b><br/>
 		<input type="text" name="_cf7cc_prompt" value="<?php echo get_option("_cf7cc_prompt"); ?>" style="width: calc(100% - 20px);" /><br/>
+		<b><?php _e("Clientify Tag if ChatGPT responds YES", 'cf7cc'); ?>:<br/><small><?php _e("use field name between brackets [your-message]", 'cf7cc'); ?></small></b><br/>
+		<input type="text" name="_cf7cc_yes_tag" value="<?php echo get_option("_cf7cc_yes_tag"); ?>" style="width: calc(100% - 20px);" /><br/>
+		<b><?php _e("Clientify Tag if ChatGPT responds NO", 'cf7cc'); ?>:<br/><small><?php _e("use field name between brackets [your-message]", 'cf7cc'); ?></small></b><br/>
+		<input type="text" name="_cf7cc_no_tag" value="<?php echo get_option("_cf7cc_no_tag"); ?>" style="width: calc(100% - 20px);" /><br/>
 		<b><?php _e("Emails to notify", 'cf7cc'); ?>:<br/><small>(<?php _e("comma separated", 'cf7cc'); ?>)</small></b><br/>
 		<input type="text" name="_cf7cc_send_emails" value="<?php echo get_option("_cf7cc_send_emails"); ?>" style="width: calc(100% - 20px);" /><br/>
 		<br/><input type="submit" name="send" class="button button-primary" value="<?php _e("Save", 'cf7cc'); ?>" />

@@ -56,7 +56,10 @@ function cf7cc_mail_sent( $contact_form ) {
         $open_ai = new OpenAi(CHATGPT_API_KEY);
         $chat = $open_ai->chat($args);
         $d = json_decode($chat, true);
-        $content = $args['messages'][0]['content']." -----> ".$d['choices'][0]['message']['content'];
+
+
+
+        $content = $args['messages'][0]['content']." -----> ".cf7cc_clean_chtGPT_response($d['choices'][0]['message']['content']);
         //file_put_contents(WP_PLUGIN_DIR . '/cf7-chatgpt-clientify/log.txt', $content."\n\n\n");
         foreach (explode(",", get_option("_cf7cc_send_emails")) as $email) {
             /*echo "---".trim($email)."---\n";
@@ -65,6 +68,11 @@ function cf7cc_mail_sent( $contact_form ) {
             wp_mail(trim($email), "Chat-GPT ".get_bloginfo('url'), $content);
         }
     }
+}
+
+function cf7cc_clean_chtGPT_response($string) {
+    $string = preg_replace('/[^a-z]/i','',strtolower($string));
+    return $string;
 }
 
 function cf7cc_generate_prompt ($posted_data) {
