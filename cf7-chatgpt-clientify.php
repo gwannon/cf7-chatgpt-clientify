@@ -21,7 +21,8 @@ function cf7cc_plugins_loaded() {
 }
 add_action('plugins_loaded', 'cf7cc_plugins_loaded', 0 );
 
-define('CHATGPT_API_KEY', get_option("_cf7cc_api_key"));
+define('CHATGPT_API_KEY', get_option("_cf7cc_chatgpt_api_key"));
+define('CLIENTIFY_API_KEY', get_option("_cf7cc_clientify_api_key"));
 
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/admin.php';
