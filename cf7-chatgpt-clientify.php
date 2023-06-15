@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name: CF7-chatGPT-Clientify
- * Plugin URI:  https://github.com/gwannon/CF7-chatGPT-Clientify
+ * Plugin URI:  https://github.com/gwannon/cf7-chatgpt-clientify
  * Description: Plugin que lee los textos de los formularios de CF7 y hace preguntas de si/no a ChatGPT para meter una etiqueta u otra a Clientify. 
- * Version:     1.0
+ * Version:     0.5
  * Author:      Gwannon
  * Author URI:  https://github.com/gwannon/
  * License:     GNU General Public License v2 or later
@@ -65,16 +65,3 @@ function cf7cc_generate_prompt ($posted_data) {
     }
     return $prompt;
 }
-
-/*
-    Para darte una idea de cómo funcionan los tokens, aquí hay algunas reglas generales generales para que finalmente puedas entenderlo:
-
-    1 token — 4 caracteres en inglés o casi una palabra
-    100 tokens— 75 palabras
-    1 o 2 oraciones — 30 tokens
-    1 párrafo — 100 tokens
-    1.500 palabras — 2.048 tokens— 5,4 páginas
-    3.000 palabras — 4.096 tokens— 10,8 páginas
-    6.000 palabras — 8.192 — 21,6 páginas
-*/
-
