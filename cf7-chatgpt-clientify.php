@@ -15,22 +15,25 @@
  * WordPress 6.2.2
  */
 
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/admin.php';
+
+define("CLIENTIFY_API_URL", "https://api.clientify.net/v1");
+define("CLIENTIFY_LOG_API_CALLS", false);
+define('CHATGPT_API_KEY', get_option("_cf7cc_chatgpt_api_key"));
+define('CLIENTIFY_API_KEY', get_option("_cf7cc_clientify_api_key"));
+
 //Cargamos el multi-idioma
 function cf7cc_plugins_loaded() {
     load_plugin_textdomain('cf7cc', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 }
 add_action('plugins_loaded', 'cf7cc_plugins_loaded', 0 );
 
-define('CHATGPT_API_KEY', get_option("_cf7cc_chatgpt_api_key"));
-define('CLIENTIFY_API_KEY', get_option("_cf7cc_clientify_api_key"));
 
-require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/admin.php';
 
-use Orhanerday\OpenAi\OpenAi;
 
+/* Chequeamos el envío de correos */ 
 add_action('wpcf7_before_send_mail', 'cf7cc_mail_sent' );
-
 function cf7cc_mail_sent( $contact_form ) { 	
     $form_ids = explode(",", get_option("_cf7cc_forms_ids"));
     if(in_array($contact_form->id(), $form_ids)) {
