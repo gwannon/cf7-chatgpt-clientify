@@ -7,9 +7,9 @@ function cf7cc_plugin_menu() {
 }
 
 function cf7cc_page_settings() { 
-	?><h1><?php _e("Configuración WP A tu gusto", 'cf7cc'); ?></h1><?php 
+	?><h1><?php _e("Configuration", 'cf7cc'); ?></h1><?php 
 	if(isset($_REQUEST['send']) && $_REQUEST['send'] != '') { 
-		?><p style="border: 1px solid green; color: green; text-align: center;"><?php _e("Datos guardados correctamente.", 'cf7cc'); ?></p><?php
+		?><p style="border: 1px solid green; color: green; text-align: center;"><?php _e("Data saved OK!!!!!", 'cf7cc'); ?></p><?php
 		update_option('_cf7cc_api_key', $_POST['_cf7cc_api_key']);
 		update_option('_cf7cc_forms_ids', $_POST['_cf7cc_forms_ids']);
 		update_option('_cf7cc_field_name', $_POST['_cf7cc_field_name']);
@@ -17,18 +17,18 @@ function cf7cc_page_settings() {
 		update_option('_cf7cc_send_emails', $_POST['_cf7cc_send_emails']); 
 	} ?>
 	<form method="post">
-    <h2><?php _e("Configuración", 'cf7cc'); ?></h2>
+    <h2><?php _e("Main configuration", 'cf7cc'); ?></h2>
 		<b><?php _e("ChatGPT Api key", 'cf7cc'); ?>:</b><br/>
 		<input type="text" name="_cf7cc_api_key" value="<?php echo get_option("_cf7cc_api_key"); ?>" style="width: calc(100% - 20px);" /><br/>
-		<b><?php _e("IDs de los formularios de CF7 (separados por comas)", 'cf7cc'); ?>:</b><br/>
+		<b><?php _e("CF7 forms ids", 'cf7cc'); ?><br/><small><?php _e("comma separated", 'cf7cc'); ?></small>:</b><br/>
 		<input type="text" name="_cf7cc_forms_ids" value="<?php echo get_option("_cf7cc_forms_ids"); ?>" style="width: calc(100% - 20px);" /><br/>
-		<b><?php _e("Nombres de los campo del formularios para meter en el prompt<br/><small>(separados por comas)</small>", 'cf7cc'); ?>:</b><br/>
+		<b><?php _e("Field name to insert in prompt", 'cf7cc'); ?>:<br/><small><?php _e("comma separated", 'cf7cc'); ?></small></b><br/>
 		<input type="text" name="_cf7cc_field_name" value="<?php echo get_option("_cf7cc_field_name"); ?>" style="width: calc(100% - 20px);" /><br/>
-		<b><?php _e("Prompt<br/><small>(mete el nombre del campo como lo metes en el email de notificación [your-message])</small>", 'cf7cc'); ?>:</b><br/>
+		<b><?php _e("Prompt", 'cf7cc'); ?>:<br/><small><?php _e("use field name between brackets [your-message]", 'cf7cc'); ?></small></b><br/>
 		<input type="text" name="_cf7cc_prompt" value="<?php echo get_option("_cf7cc_prompt"); ?>" style="width: calc(100% - 20px);" /><br/>
-		<b><?php _e("Emails de aviso<br/><small>(separados por comas)</small>", 'cf7cc'); ?>:</b><br/>
+		<b><?php _e("Emails to notify", 'cf7cc'); ?>:<br/><small>(<?php _e("comma separated", 'cf7cc'); ?>)</small></b><br/>
 		<input type="text" name="_cf7cc_send_emails" value="<?php echo get_option("_cf7cc_send_emails"); ?>" style="width: calc(100% - 20px);" /><br/>
-		<br/><input type="submit" name="send" class="button button-primary" value="<?php _e("Guardar", 'cf7cc'); ?>" />
+		<br/><input type="submit" name="send" class="button button-primary" value="<?php _e("Save", 'cf7cc'); ?>" />
 	</form>
 	<?php
 }

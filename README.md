@@ -22,6 +22,11 @@ Answer only yes or no if the text between parenthesis is quotation request ([men
 * Conectar a la API de Clientify y hacer que según sea la respuesta de ChatGPT meta una etiqueta u otra.
 * Diferentes prompts y campos para cada formulario, incluso varias preguntas ChatGPT por .
 
+## Librerías usadas
+
+https://github.com/orhanerday/open-ai
+https://github.com/gwannon/PHPClientifyAPI
+
 ## Para el calculo de tokens
 
 https://computerhoy.com/son-tokens-chatgpt-cual-limite-ocurre-superas-1240014

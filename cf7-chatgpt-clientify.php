@@ -15,6 +15,12 @@
  * WordPress 6.2.2
  */
 
+//Cargamos el multi-idioma
+function cf7cc_plugins_loaded() {
+    load_plugin_textdomain('cf7cc', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
+}
+add_action('plugins_loaded', 'cf7cc_plugins_loaded', 0 );
+
 define('CHATGPT_API_KEY', get_option("_cf7cc_api_key"));
 
 require __DIR__ . '/vendor/autoload.php';
