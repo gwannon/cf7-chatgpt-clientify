@@ -24,8 +24,8 @@ Answer only yes or no if the text between parenthesis is quotation request ([men
 
 ## Librerías usadas
 
-https://github.com/orhanerday/open-ai
-https://github.com/gwannon/PHPClientifyAPI
+* https://github.com/orhanerday/open-ai
+* https://github.com/gwannon/PHPClientifyAPI
 
 ## Para el calculo de tokens
 
@@ -33,10 +33,10 @@ https://computerhoy.com/son-tokens-chatgpt-cual-limite-ocurre-superas-1240014
 
 Para darte una idea de cómo funcionan los tokens, aquí hay algunas reglas generales generales para que finalmente puedas entenderlo:
 
-1 token — 4 caracteres en inglés o casi una palabra
-100 tokens— 75 palabras
-1 o 2 oraciones — 30 tokens
-1 párrafo — 100 tokens
-1.500 palabras — 2.048 tokens— 5,4 páginas
-3.000 palabras — 4.096 tokens— 10,8 páginas
-6.000 palabras — 8.192 — 21,6 páginas
+* 1 token — 4 caracteres en inglés o casi una palabra
+* 100 tokens— 75 palabras
+* 1 o 2 oraciones — 30 tokens
+* 1 párrafo — 100 tokens
+* 1.500 palabras — 2.048 tokens— 5,4 páginas
+* 3.000 palabras — 4.096 tokens— 10,8 páginas
+* 6.000 palabras — 8.192 — 21,6 páginas
