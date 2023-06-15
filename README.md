@@ -1,5 +1,5 @@
 # cf7-chatgpt-clientify
-Plugin que lee los textos de los formularios de Contact Form 7 y hace preguntas de si/no a ChatGPT para meter una etiqueta u otra a Clientify.
+Plugin para WordPress que lee los textos de los formularios de Contact Form 7 y hace preguntas de si/no a ChatGPT para meter una etiqueta u otra a Clientify.
 
 ## Instalación
 Debes ejecutar composer antes de subirla WordPress para poder descargarte las librerias que hace uso.
