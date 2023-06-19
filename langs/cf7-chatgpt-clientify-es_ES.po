@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cf7cc\n"
-"POT-Creation-Date: 2023-06-15 10:37+0200\n"
-"PO-Revision-Date: 2023-06-15 10:38+0200\n"
+"POT-Creation-Date: 2023-06-19 16:04+0200\n"
+"PO-Revision-Date: 2023-06-19 16:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: jorge@enutt.net\n"
 "Language: es_ES\n"
@@ -27,39 +27,55 @@ msgstr "Configuración"
 msgid "Data saved OK!!!!!"
 msgstr "¡¡¡¡¡¡Datos guardados correctamente!!!!!"
 
-#: ../admin.php:20
+#: ../admin.php:27
 msgid "Main configuration"
 msgstr "Configuración principal"
 
-#: ../admin.php:21
-msgid "ChatGPT Api key"
-msgstr "ChatGPT Api key"
+#: ../admin.php:28
+msgid "ChatGPT API key"
+msgstr "ChatGPT API key"
 
-#: ../admin.php:23
+#: ../admin.php:30
+msgid "Clientify API key"
+msgstr "Clientify API key"
+
+#: ../admin.php:32
 msgid "CF7 forms ids"
 msgstr "IDs de formularios de CF7"
 
-#: ../admin.php:23 ../admin.php:25 ../admin.php:29
+#: ../admin.php:32 ../admin.php:36 ../admin.php:44
 msgid "comma separated"
 msgstr "separados por comas"
 
-#: ../admin.php:25
+#: ../admin.php:34
+msgid "Field name to email"
+msgstr "Nombre del campo de email"
+
+#: ../admin.php:36
 msgid "Field name to insert in prompt"
 msgstr "Nombre de los campos que queremos insertar en el prompt"
 
-#: ../admin.php:27
+#: ../admin.php:38
 msgid "Prompt"
 msgstr "Prompt"
 
-#: ../admin.php:27
+#: ../admin.php:38 ../admin.php:40 ../admin.php:42
 msgid "use field name between brackets [your-message]"
 msgstr "usar el nombre del campo entre corchetes [your-message]"
 
-#: ../admin.php:29
+#: ../admin.php:40
+msgid "Clientify Tag if ChatGPT responds YES"
+msgstr "Etiqueta de Clientify su ChatGPT responde \"yes\""
+
+#: ../admin.php:42
+msgid "Clientify Tag if ChatGPT responds NO"
+msgstr "Etiqueta de Clientify su ChatGPT responde \"no\""
+
+#: ../admin.php:44
 msgid "Emails to notify"
 msgstr "Emails a lo que deseo notificar"
 
-#: ../admin.php:31
+#: ../admin.php:46
 msgid "Save"
 msgstr "Guardar"
 

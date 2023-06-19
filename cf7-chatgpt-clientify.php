@@ -15,7 +15,15 @@
  * WordPress 6.2.2
  */
 
+ ini_set("display_errors", 1);
+
 require __DIR__ . '/vendor/autoload.php';
+use Orhanerday\OpenAi\OpenAi;
+use Gwannon\PHPClientifyAPI\contactClientify;
+//use Gwannon\PHPActiveCampaignAPI\contactAC;
+//use Gwannon\PHPActiveCampaignAPI\curlAC;
+
+
 require __DIR__ . '/admin.php';
 
 define("CLIENTIFY_API_URL", "https://api.clientify.net/v1");
@@ -53,19 +61,46 @@ function cf7cc_mail_sent( $contact_form ) {
             'frequency_penalty' => 0,
             'presence_penalty' => 0,
         ];
-        $open_ai = new OpenAi(CHATGPT_API_KEY);
-        $chat = $open_ai->chat($args);
-        $d = json_decode($chat, true);
+        $counter = 0;
+        $responses = [];
+        //echo "---".$prompt."---\n";
+        for ($i = 0; $i < 3; $i++) {
+            $open_ai = new OpenAi(CHATGPT_API_KEY);
+            $chat = $open_ai->chat($args);
+            $d = json_decode($chat, true);
+            if(isset($d['choices'][0]['message']['content'])) {
+                $response = cf7cc_clean_chtGPT_response($d['choices'][0]['message']['content']);
+                $responses[] = $response;
+                if ($response == 'yes') $counter++;
+                else if ($response == 'no') $counter--;
+                //echo "---".$response."---\n";
+            }
+        }
 
-
-
-        $content = $args['messages'][0]['content']." -----> ".cf7cc_clean_chtGPT_response($d['choices'][0]['message']['content']);
+        //Guardamos log
         //file_put_contents(WP_PLUGIN_DIR . '/cf7-chatgpt-clientify/log.txt', $content."\n\n\n");
-        foreach (explode(",", get_option("_cf7cc_send_emails")) as $email) {
-            /*echo "---".trim($email)."---\n";
-            echo "---"."Chat-GPT ".get_bloginfo('url')."---\n";
-            echo "---".$content."---\n";*/
-            wp_mail(trim($email), "Chat-GPT ".get_bloginfo('url'), $content);
+
+        //Avisamos a los admins
+        $content = $prompt." -----> ".implode(", ", $responses)." ----> ".$counter;
+        //echo "---".$content."---\n";
+        $admins = explode(",", get_option("_cf7cc_send_emails"));
+        if(count($admins) > 0) {
+            foreach ($admins as $email) {
+                wp_mail(trim($email), "Chat-GPT ".get_bloginfo('url'), $content);
+            }
+        }
+
+        //Conectamos con CLientify y metemos las etiquetas adecuadas 
+        $email_label = get_option("_cf7cc_email");
+        $email = $posted_data[$email_label];
+        if($counter > 0) $tag = get_option("_cf7cc_yes_tag"); //YES
+        else if($counter < 0) $tag = get_option("_cf7cc_no_tag");
+        else $tag = "";
+        $contact = new contactClientify($email, true); //Si no existe se crea
+        if($tag != '' && !$contact->hasTag($tag)) {
+            //echo "---Añadir tag: ".$tag."---\n";
+            $contact->addTag($tag);
+            $contact->update();
         }
     }
 }
@@ -79,7 +114,8 @@ function cf7cc_generate_prompt ($posted_data) {
     $prompt = get_option("_cf7cc_prompt");
     foreach (explode(",", get_option("_cf7cc_field_name")) as $label) {
         $label = trim($label);
-        $prompt = str_replace("[".$label."]", $posted_data[$label], $prompt);
+        $text = str_replace(["\r\n", "\r", "\n", "\t"], '', trim($posted_data[$label]));
+        $prompt = str_replace("[".$label."]", $text, $prompt);
     }
     return $prompt;
 }
