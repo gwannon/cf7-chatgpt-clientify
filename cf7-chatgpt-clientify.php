@@ -114,7 +114,7 @@ function cf7cc_generate_prompt ($posted_data) {
     $prompt = get_option("_cf7cc_prompt");
     foreach (explode(",", get_option("_cf7cc_field_name")) as $label) {
         $label = trim($label);
-        $text = str_replace(["\r\n", "\r", "\n", "\t"], '', trim($posted_data[$label]));
+        $text = str_replace(["\r\n", "\r", "\n", "\t"], ' ', trim($posted_data[$label]));
         $prompt = str_replace("[".$label."]", $text, $prompt);
     }
     return $prompt;
