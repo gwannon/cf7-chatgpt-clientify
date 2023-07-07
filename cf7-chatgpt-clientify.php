@@ -15,8 +15,6 @@
  * WordPress 6.2.2
  */
 
- ini_set("display_errors", 1);
-
 require __DIR__ . '/vendor/autoload.php';
 use Orhanerday\OpenAi\OpenAi;
 use Gwannon\PHPClientifyAPI\contactClientify;
@@ -27,7 +25,7 @@ use Gwannon\PHPClientifyAPI\contactClientify;
 require __DIR__ . '/admin.php';
 
 define("CLIENTIFY_API_URL", "https://api.clientify.net/v1");
-define("CLIENTIFY_LOG_API_CALLS", false);
+define("CLIENTIFY_LOG_API_CALLS", true);
 define('CHATGPT_API_KEY', get_option("_cf7cc_chatgpt_api_key"));
 define('CLIENTIFY_API_KEY', get_option("_cf7cc_clientify_api_key"));
 
