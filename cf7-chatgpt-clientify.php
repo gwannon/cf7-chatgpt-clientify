@@ -15,8 +15,6 @@
  * WordPress 6.2.2
  */
 
- ini_set("display_errors", 1);
-
 require __DIR__ . '/vendor/autoload.php';
 use Orhanerday\OpenAi\OpenAi;
 use Gwannon\PHPClientifyAPI\contactClientify;
@@ -36,9 +34,6 @@ function cf7cc_plugins_loaded() {
     load_plugin_textdomain('cf7cc', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 }
 add_action('plugins_loaded', 'cf7cc_plugins_loaded', 0 );
-
-
-
 
 /* Chequeamos el envío de correos */ 
 add_action('wpcf7_before_send_mail', 'cf7cc_mail_sent' );
